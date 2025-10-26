@@ -4,8 +4,8 @@
 
 </div>
 
-A neovim colorscheme based on [Rust Foundation's
-brand](https://rustfoundation.org/brand-guide/) color palette:
+A neovim colorscheme based on [Rust Foundation
+brand's](https://rustfoundation.org/brand-guide/) color palette:
 
 | Color Name     | Hex Value | Color Render                                            |
 | :------------: | :-------: | :-----------------------------------------------------: |
