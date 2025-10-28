@@ -1,0 +1,1 @@
+require("rustheme").load("dark")
