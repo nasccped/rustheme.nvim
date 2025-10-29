@@ -1,4 +1,4 @@
-local utils = require("rustheme.utils")
+local utils = require("rustheme.lib.utils")
 local Rustheme = {}
 
 ---Default rustheme variant when not specified.
@@ -25,7 +25,7 @@ function Rustheme.load(variant)
         utils.run_cmd("syntax reset")
     end
     variant = variant or default_variant
-    local background = variant and background_map[variant] or current_background
+    local background = background_map[variant] or current_background
     local colors_name = string.format("rustheme-%s", variant)
     if background ~= utils.get_background() then
         utils.set_background(background)
