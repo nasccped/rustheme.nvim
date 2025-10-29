@@ -1,24 +1,32 @@
 local utils = require("rustheme.utils")
 local Rustheme = {}
 
+---Default rustheme variant when not specified.
+local default_variant = "core-dark"
+
+---Current vim background (when variant not specified).
+local current_background = utils.get_background()
+
+---Local map for variant background detection.
+local background_map = {
+    ["core-dark"] = "dark",
+    ["core-light"] = "light",
+    ["mangrove-dark"] = "dark",
+    ["mangrove-light"] = "light",
+}
+
 ---Loads the colorscheme based on an optional theme variant.
 ---@param variant? string
 function Rustheme.load(variant)
-    -- new colors_name value to be set
-    local colors_name
-    -- new background mode ('light'|'dark') to be set
-    local background
-    -- reseting colors and syntax hl
     if utils.get_colors_name() then
         utils.run_cmd("hi clear")
     end
     if vim.fn.exists("syntax_on") then
         utils.run_cmd("syntax reset")
     end
-    -- set colors_name + theme variant (default if not specified...)
-    colors_name = string.format("rustheme%s", variant and ("-" .. variant) or "")
-    background = variant ~= "mangrove" and variant or utils.get_background()
-    variant = variant or background
+    variant = variant or default_variant
+    local background = variant and background_map[variant] or current_background
+    local colors_name = string.format("rustheme-%s", variant)
     if background ~= utils.get_background() then
         utils.set_background(background)
     end
