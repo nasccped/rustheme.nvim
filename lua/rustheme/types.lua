@@ -1,0 +1,16 @@
+---@class palette.EditorFields
+---@field foreground string Foreground color (normal text - txt like) hex.
+---@field weak_foreground string Foreground color used for Conceal and similars.
+---@field current_match string Background color used for matching of the last search pattern.
+---@field cursor_fg string|nil Foreground color of the current character under the cursor. Nil means the use the same as `background`.
+---@field cursor_bg string|nil Background color of the current character under the cursor. Nil means the use the same as `foreground`.
+---@field background string Background color.
+---@field foreground_non_current string|nil Foreground color for non current window. Nil means use the same as `foreground`.
+---@field background_non_current string|nil Background color for non current window. Nil means use the same as `background`.
+---@field float_foreground string|nil Foreground color for floating window. Nil means same as `foreground`.
+---@field float_background string|nil Background color for floating window. Nil means same as `background`.
+---@field float_title string Foreground color for floating window title.
+---@field float_title_bg string|nil Background color for floating window titles. Nil means same as `float_background`.
+---@field float_border_fg string Foreground color for floating window border.
+---@field float_border_bg string|nil Background color for floating window titles. Nil means same as `float_background`.
+---@field current_space string Background color for space if selected by something (ColorColumn, CursorLine, ...).
