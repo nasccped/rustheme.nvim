@@ -158,7 +158,7 @@ function M.groups(plt, cfg)
         },
 
         --- Search & Select -----------------------------------------
-        Search = { fg = none, bg = plt.editor.weak_foreground },
+        Search = { fg = none, bg = plt.editor.weak_yellow },
         IncSearch = { fg = bg, bg = plt.editor.magenta },
         Substitute = { fg = bg, bg = plt.editor.cyan, bold = bold },
         CurSearch = "IncSearch",
