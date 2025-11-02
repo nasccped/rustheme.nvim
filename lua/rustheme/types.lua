@@ -1,16 +1,27 @@
 ---@class palette.EditorFields
----@field foreground string Foreground color (normal text - txt like) hex.
----@field weak_foreground string Foreground color used for Conceal and similars.
----@field current_match string Background color used for matching of the last search pattern.
----@field cursor_fg string|nil Foreground color of the current character under the cursor. Nil means the use the same as `background`.
----@field cursor_bg string|nil Background color of the current character under the cursor. Nil means the use the same as `foreground`.
+---@field foreground string Foreground color (text).
+---@field weak_foreground string Foreground weak variant compared with bg.
 ---@field background string Background color.
----@field foreground_non_current string|nil Foreground color for non current window. Nil means use the same as `foreground`.
----@field background_non_current string|nil Background color for non current window. Nil means use the same as `background`.
----@field float_foreground string|nil Foreground color for floating window. Nil means same as `foreground`.
----@field float_background string|nil Background color for floating window. Nil means same as `background`.
----@field float_title string Foreground color for floating window title.
----@field float_title_bg string|nil Background color for floating window titles. Nil means same as `float_background`.
----@field float_border_fg string Foreground color for floating window border.
----@field float_border_bg string|nil Background color for floating window titles. Nil means same as `float_background`.
----@field current_space string Background color for space if selected by something (ColorColumn, CursorLine, ...).
+---@field weak_background string Background weak variant compared with the mode ('dark'|'light') color.
+---@field strong_background string Lighter/Darker color based on background hex.
+---@field contrast_color string Contrast color (with background).
+---@field strong_contrast_color string Secondary contrast color (current line number, etc...).
+---@field red string Red color (error msgs...)
+---@field green string Green color (success msgs...)
+---@field yellow string Yellow color (warn msgs...)
+---@field weak_red string Weak red color (error msgs...)
+---@field weak_green string Green color (success msgs...)
+---@field weak_yellow string Yellow color (warn msgs...)
+---@field cyan string Cyan color (when red/green/yellow and it's weaks aren't applicable).
+---@field magenta string Magenta color (status line).
+
+---@class palette.SyntaxFields
+---@field comment string Comment foreground hex.
+---@field keyword string Keyword foreground hex.
+
+---@class palette.RusthemePalette
+---@field bold boolean Allow bold text for this entire theme variant.
+---@field italic boolean Allow italic text for this entire theme variant.
+---@field undercurl boolean Allow undercurl for Spelled text.
+---@field editor palette.EditorFields
+---@field syntax palette.SyntaxFields
