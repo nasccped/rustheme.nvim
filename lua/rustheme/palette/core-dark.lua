@@ -15,8 +15,8 @@ local CoreDark = {
         green = "#40ca39",
         yellow = "#e1af2d",
         weak_red = "#491a22",
-        weak_green = "#51421e",
-        weak_yellow = "#194421",
+        weak_green = "#194421",
+        weak_yellow = "#51421e",
         cyan = "#78e3ea",
         magenta = "#e783e1"
     },
