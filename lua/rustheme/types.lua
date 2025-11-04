@@ -1,27 +1,76 @@
----@class palette.EditorFields
----@field foreground string Foreground color (text).
----@field weak_foreground string Foreground weak variant compared with bg.
+---@class config.TransparentsTriggers Control transparent bg.
+---@field background boolean Turn main bg into transparent.
+---@field float_background boolean Turn floating window bg into transparent.
+
+---@class mapping.Core Map for neovim core (bg, fg, borders, etc...).
 ---@field background string Background color.
----@field weak_background string Background weak variant compared with the mode ('dark'|'light') color.
----@field strong_background string Lighter/Darker color based on background hex.
----@field contrast_color string Contrast color (with background).
----@field strong_contrast_color string Secondary contrast color (current line number, etc...).
----@field red string Red color (error msgs...)
----@field green string Green color (success msgs...)
----@field yellow string Yellow color (warn msgs...)
----@field weak_red string Weak red color (error msgs...)
----@field weak_green string Green color (success msgs...)
----@field weak_yellow string Yellow color (warn msgs...)
----@field cyan string Cyan color (when red/green/yellow and it's weaks aren't applicable).
----@field magenta string Magenta color (status line).
+---@field foreground string Foreground color.
+---@field border string Border foreground color.
+---@field title string Title foreground color (turns into background color if `mapping.RusthemeMapping.invert_title` is enable).
+---@field float_background string|nil Float window background color (`nil` means a bit darker than `background`).
+---@field inactive_foreground string Foreground color for inactive text.
+---@field cursor_bg string Background color for cursor.
+---@field cursor_fg string Foreground color for cursor.
+---@field cursor_column string|nil Background for cursor column (when `cursorcolumn` is set. `nil` means weak than cursor bg).
+---@field match_paren string Background color for matching parentheses (`()`, `{}`, ...).
+---@field current_search string Background color for neovim text search.
+---@field non_current_search string Background color for neovim text search (not the current item).
+---@field substitute string Background color for neovim text substitution (aka `s:from/to/[OPTIONS]` command).
+---@field visual_selection string Background color for neovim text selection (visual mode).
+---@field line_number string Foreground color for all line numbers.
+---@field current_line_number string Foreground color for the current line number.
+---@field window_separator_fg string Foreground color for the window separator.
+---@field window_separator_bg string Background color for the window separator.
+---@field folded string Background color for the folded lines.
+---@field non_text string|nil Foreground color for the NonText & EndOfBuffer (`nil` means `NONE` - invisible).
+---@field terminal string Foreground color for terminal text.
 
----@class palette.SyntaxFields
----@field comment string Comment foreground hex.
----@field keyword string Keyword foreground hex.
+---@class mapping.Diff Map for difs (git).
+---@field added string Foreground color for added lines in a diff.
+---@field removed string Foreground color for removed lines in a diff.
+---@field changed string Foreground color for changed lines in a diff.
+---@field diff_add string Background color for Diff mode (added line).
+---@field diff_delete string Background color for Diff mode (deleted line).
+---@field diff_change string Background color for Diff mode (changed line).
+---@field diff_text string Background color for Diff mode (diff text within a changed line).
+---@field diff_text_add string Background color for Diff mode (added text within a changed line).
 
----@class palette.RusthemePalette
----@field bold boolean Allow bold text for this entire theme variant.
----@field italic boolean Allow italic text for this entire theme variant.
----@field undercurl boolean Allow undercurl for Spelled text.
----@field editor palette.EditorFields
----@field syntax palette.SyntaxFields
+---@class mapping.Diagnostic Map for diag. messages.
+---@field error string Foreground color for error messages.
+---@field warn string Foreground color for warning messages.
+---@field question string Foreground color for question messages.
+
+---@class mapping.Status Map for status line colors.
+---@field background string StatusLine background color.
+---@field normal string StatusLine background color for normal tag.
+---@field insert string StatusLine background color for insert tag.
+---@field visual string StatusLine background color for visual tag.
+---@field replace string StatusLine background color for replace tag.
+---@field command string StatusLine background color for command tag.
+---@field terminal string StatusLine background color for terminal tag.
+
+---@class mapping.Spell Map text spelling.
+---@field spell_bad string Bad spelling undercurl color.
+---@field spell_cap string Capital expected spelling undercurl color.
+---@field spell_local string Other region spelling undercurl color.
+---@field spell_rare string Rarely used spelling undercurl color.
+
+---@class mapping.Pmenu Pmenu mapping.
+---@field foreground string Pmenu foreground color.
+---@field background string Pmenu background color.
+---@field selection string Pmenu selection background color.
+---@field scroll_bar string Pmenu scroll bar background color.
+---@field thumb string Pmenu thumb background color.
+---@field wild_menu string Wild menu current completion background color.
+
+---@class mapping.RusthemeMapping Map the neovim token context to a palette color. Also holds global triggers (bold, italic, ...)
+---@field bolds boolean Allow bold text for this entire theme variant.
+---@field italics boolean Allow italic text for this entire theme variant.
+---@field transparents config.TransparentsTriggers
+---@field invert_title boolean Invert title color (bg/fg).
+---@field core mapping.Core
+---@field status mapping.Status
+---@field pmenu mapping.Pmenu
+---@field diff mapping.Diff
+---@field diagnostic mapping.Diagnostic
+---@field spelling mapping.Spell
