@@ -1,4 +1,4 @@
----@class config.TransparentsTriggers Control transparent bg.
+---@class config.TransparentTriggers Control transparent bg.
 ---@field background boolean Turn main bg into transparent.
 ---@field float_background boolean Turn floating window bg into transparent.
 
@@ -66,7 +66,7 @@
 ---@class mapping.RusthemeMapping Map the neovim token context to a palette color. Also holds global triggers (bold, italic, ...)
 ---@field bolds boolean Allow bold text for this entire theme variant.
 ---@field italics boolean Allow italic text for this entire theme variant.
----@field transparents config.TransparentsTriggers
+---@field transparents config.TransparentTriggers
 ---@field invert_title boolean Invert title color (bg/fg).
 ---@field core mapping.Core
 ---@field status mapping.Status
