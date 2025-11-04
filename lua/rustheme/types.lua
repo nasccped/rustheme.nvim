@@ -7,6 +7,7 @@
 ---@field italics boolean Global italic trigger.
 ---@field transparents config.TransparentTriggers
 ---@field invert_title boolean Invert title color (bg/fg).
+---@field termguicolors boolean
 
 ---@class config.MappingOverrides A set of mappings to override each one of the colorscheme variants (`everything` field contains the highest priority).
 ---@field everything mapping.RusthemeMapping Overrides all variants.

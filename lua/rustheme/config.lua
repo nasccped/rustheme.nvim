@@ -8,7 +8,8 @@ local default_config = {
             background = false,
             float_background = false
         },
-        invert_title = false
+        invert_title = false,
+        termguicolors = true
     },
     mapping_overrides = {
         everything = {},
