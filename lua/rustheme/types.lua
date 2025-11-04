@@ -63,6 +63,30 @@
 ---@field thumb string Pmenu thumb background color.
 ---@field wild_menu string Wild menu current completion background color.
 
+---@class mapping.Syntax Syntax color mapping.
+---@field comment string Comment's foreground color.
+---@field constant string Constant's foreground color.
+---@field str string String's foreground color.
+---@field charac string|nil Char's foreground color (`nil` means same as `str`).
+---@field integer string Integer's foreground color.
+---@field float string Float's foreground color (`nil` means same as `integer`).
+---@field boolean string Boolean's foreground color.
+---@field variable string Variable's foreground color.
+---@field function string Function's foreground color.
+---@field keyword string Keyword's foreground color.
+---@field operator string Operator's foreground color.
+---@field annotation string Annotation's foreground color.
+---@field type string Type's foreground color.
+---@field underline string Underline's foreground color.
+
+---@class mapping.LSP LSP color mapping.
+---@field error string Foreground color for lsp error.
+---@field warn string Foreground color for lsp warning.
+---@field hint string Foreground color for lsp hint.
+---@field info string Foreground color for lsp info.
+---@field ok string Foreground color for lsp ok.
+---@field code_lens string Foreground color for lsp code lens.
+
 ---@class mapping.RusthemeMapping Map the neovim token context to a palette color. Also holds global triggers (bold, italic, ...)
 ---@field bolds boolean Allow bold text for this entire theme variant.
 ---@field italics boolean Allow italic text for this entire theme variant.
@@ -74,3 +98,5 @@
 ---@field diff mapping.Diff
 ---@field diagnostic mapping.Diagnostic
 ---@field spelling mapping.Spell
+---@field syntax mapping.Syntax
+---@field lsp mapping.LSP
