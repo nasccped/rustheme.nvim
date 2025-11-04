@@ -2,6 +2,24 @@
 ---@field background boolean Turn main bg into transparent.
 ---@field float_background boolean Turn floating window bg into transparent.
 
+---@class config.GlobalsConfig
+---@field bolds boolean Global bold trigger.
+---@field italics boolean Global italic trigger.
+---@field transparents config.TransparentTriggers
+---@field invert_title boolean Invert title color (bg/fg).
+
+---@class config.MappingOverrides A set of mappings to override each one of the colorscheme variants (`everything` field contains the highest priority).
+---@field everything mapping.RusthemeMapping Overrides all variants.
+---@field ["core-dark"] mapping.RusthemeMapping Overrides `core-dark`'s variant only.
+---@field ["core-light"] mapping.RusthemeMapping Overrides `core-light`'s variant only.
+---@field ["mangrove-dark"] mapping.RusthemeMapping Overrides `mangrove-dark`'s variant only.
+---@field ["mangrove-light"] mapping.RusthemeMapping Overrides `mangrove-light`'s variant only.
+
+---@class config.RusthemeConfig Rustheme global config.
+---@field globals config.GlobalsConfig Targets the colorscheme entirely.
+---@field mapping_overrides config.MappingOverrides Overrides specific color palettes.
+---@field groups_override table Overrides the group properties (key values must be a table).
+
 ---@class mapping.Core Map for neovim core (bg, fg, borders, etc...).
 ---@field background string Background color.
 ---@field foreground string Foreground color.
