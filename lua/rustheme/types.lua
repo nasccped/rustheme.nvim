@@ -107,16 +107,16 @@
 ---@field code_lens string Foreground color for lsp code lens.
 
 ---@class mapping.RusthemeMapping Map the neovim token context to a palette color. Also holds global triggers (bold, italic, ...)
----@field bolds boolean Allow bold text for this entire theme variant.
----@field italics boolean Allow italic text for this entire theme variant.
----@field transparents config.TransparentTriggers
----@field invert_title boolean Invert title color (bg/fg).
----@field termguicolors boolean
----@field core mapping.Core
----@field status mapping.Status
----@field pmenu mapping.Pmenu
----@field diff mapping.Diff
----@field diagnostic mapping.Diagnostic
----@field spelling mapping.Spell
----@field syntax mapping.Syntax
----@field lsp mapping.LSP
+---@field bolds? boolean Allow bold text for this entire theme variant.
+---@field italics? boolean Allow italic text for this entire theme variant.
+---@field transparents? config.TransparentTriggers
+---@field invert_title? boolean Invert title color (bg/fg).
+---@field termguicolors? boolean
+---@field core? mapping.Core
+---@field status? mapping.Status
+---@field pmenu? mapping.Pmenu
+---@field diff? mapping.Diff
+---@field diagnostic? mapping.Diagnostic
+---@field spelling? mapping.Spell
+---@field syntax? mapping.Syntax
+---@field lsp? mapping.LSP
