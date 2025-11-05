@@ -111,6 +111,7 @@
 ---@field italics boolean Allow italic text for this entire theme variant.
 ---@field transparents config.TransparentTriggers
 ---@field invert_title boolean Invert title color (bg/fg).
+---@field termguicolors boolean
 ---@field core mapping.Core
 ---@field status mapping.Status
 ---@field pmenu mapping.Pmenu
