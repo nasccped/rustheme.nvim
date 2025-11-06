@@ -1,5 +1,6 @@
 local M = {}
 
+---@type config.RusthemeConfig
 local default_config = {
     globals = {
         bolds = true,
@@ -18,7 +19,7 @@ local default_config = {
         ["mangrove-dark"] = {},
         ["mangrove-light"] = {}
     },
-    groups_override = {}
+    group_overrides = {}
 }
 
 --- Returns the default rustheme configuration.

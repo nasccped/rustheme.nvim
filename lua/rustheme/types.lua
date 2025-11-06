@@ -19,7 +19,7 @@
 ---@class config.RusthemeConfig Rustheme global config.
 ---@field globals config.GlobalsConfig Targets the colorscheme entirely.
 ---@field mapping_overrides config.MappingOverrides Overrides specific color palettes.
----@field groups_override table Overrides the group properties (key values must be a table).
+---@field group_overrides table Overrides the group properties (key values must be a table).
 
 ---@class mapping.Core Map for neovim core (bg, fg, borders, etc...).
 ---@field background string Background color.
