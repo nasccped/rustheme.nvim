@@ -34,6 +34,7 @@
 ---@field match_paren string Background color for matching parentheses (`()`, `{}`, ...).
 ---@field current_search string Background color for neovim text search.
 ---@field non_current_search string Background color for neovim text search (not the current item).
+---@field current_line string Current line color background.
 ---@field substitute string Background color for neovim text substitution (aka `s:from/to/[OPTIONS]` command).
 ---@field visual_selection string Background color for neovim text selection (visual mode).
 ---@field line_number string Foreground color for all line numbers.
