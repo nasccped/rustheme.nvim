@@ -49,11 +49,11 @@
 ---@field added string Foreground color for added lines in a diff.
 ---@field removed string Foreground color for removed lines in a diff.
 ---@field changed string Foreground color for changed lines in a diff.
----@field diff_add string Background color for Diff mode (added line).
----@field diff_delete string Background color for Diff mode (deleted line).
----@field diff_change string Background color for Diff mode (changed line).
----@field diff_text string Background color for Diff mode (diff text within a changed line).
----@field diff_text_add string Background color for Diff mode (added text within a changed line).
+---@field diff_add string|nil Background color for Diff mode (added line). `nil` means `added` blend to background.
+---@field diff_delete string|nil Background color for Diff mode (deleted line). `nil` means `removed` blend to background.
+---@field diff_change string|nil Background color for Diff mode (changed line). `nil` means `changed` blend to background.
+---@field diff_text string|nil Background color for Diff mode (diff text within a changed line). `nil` means `changed` blend to background.
+---@field diff_text_add string|nil Background color for Diff mode (added text within a changed line). `nil` means `changed` blend to background.
 
 ---@class mapping.Diagnostic Map for diag. messages.
 ---@field error string Foreground color for error messages.
