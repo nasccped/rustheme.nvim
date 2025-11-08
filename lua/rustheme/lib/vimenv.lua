@@ -45,11 +45,11 @@ function M.set_termguicolors(enable)
     o.termguicolors = enable
 end
 
---- Sets the highlights for each groups. The map type can be string to
+--- Sets the highlights for each group. The map type can be string to
 --- table (default behavior) or string to string (using
 --- `{ link = value }`).
 ---@param groups table
-function M.set_group_hl(groups)
+function M.set_hl(groups)
     for k, v in pairs(groups) do
         hl(0, k, type(v) == "string" and { link = v } or v)
     end
