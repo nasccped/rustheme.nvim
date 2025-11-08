@@ -1,6 +1,6 @@
 local M = {}
 
-local mods = { "base" }
+local mods = { "base", "lsp", "syntax" }
 
 --- Generates a group table from a given `palette.RusthemePalette`
 --- and `config.GlobalFields`. The returned table can map string to
