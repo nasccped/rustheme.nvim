@@ -10,6 +10,8 @@ local RGBTable = {
     b = nil
 }
 
+local fields_list = { "r", "g", "b" }
+
 RGBTable.__index = RGBTable
 
 --- Creates a new RGBTable from a string value.
@@ -19,14 +21,15 @@ function RGBTable:new(value)
     value = string.gsub(value, "#", "")
     if string.len(value) ~= 6 then
         error(
-            "RGBTable PANIC: string input should have len == 6 (hex repr.)"
+            "RGBTable PANIC: string input should have len == 6 "
+            .. "(hex repr.)"
         )
     end
-    local rgb = { r = nil, g = nil, b = nil }
+    local rgb = {}
     local temp
-    for i = 1, #rgb do
-        temp = value.sub((i * 2) - 1, i * 2)
-        rgb[i] = tonumber(temp, 16)
+    for i, k in ipairs(fields_list) do
+        temp = value:sub(i * 2 - 1, i * 2)
+        rgb[k] = tonumber(temp, 16)
     end
     return setmetatable(rgb, RGBTable)
 end
@@ -59,7 +62,10 @@ function RGBTable:to_hex()
         end
         self[k] = string.format("%02X", v)
     end
-    local r, g, b = table.unpack(self)
+    local r, g, b
+    r = self.r
+    g = self.g
+    b = self.b
     return string.format("#%s%s%s", r, g, b)
 end
 
@@ -78,8 +84,20 @@ function RGBTable:luminosity(amount)
             diffs[k] = 255 - v
         end
     end
-    for i = 1, #self do
-        self[i] = self[i] + (diffs[i] / 100 * amount)
+    for _, k in ipairs(fields_list) do
+        self[k] = self[k] + (diffs[k] / 100 * amount)
+    end
+    return self
+end
+
+--- Blends the self RGBTable with another one + returns itself.
+---@param other lib.color.RGBTable
+---@param amount number
+---@return lib.color.RGBTable
+function RGBTable:blend_with(other, amount)
+    amount = amount / 100
+    for _, k in ipairs(fields_list) do
+        self[k] = (1 - amount) * self[k] + amount * other[k]
     end
     return self
 end
@@ -94,11 +112,35 @@ function M.luminosity(color_hex, amount)
     -- if invalid amount value, panic.
     if amount > 100 or amount < -100 then
         error(
-            "color PANIC: increasing luminosity with an invalid amount (" ..
-            amount .. ")")
+            "color PANIC: increasing luminosity with an invalid amount ("
+            .. amount
+            .. ")"
+        )
     end
     local tbl = RGBTable:new(color_hex)
     return tbl:luminosity(amount):round():clamp():to_hex()
+end
+
+--- Blend two hex values into a new one by a given amount. The amount
+--- is percentage based, so: 0% means the same as c1, and 100% means
+--- the same as c2.
+---@param c1 string
+---@param c2 string
+---@param amount number
+---@return string
+function M.blend(c1, c2, amount)
+    if amount < 0 or amount > 100 then
+        error(
+            "color PANIC: increasing luminosity with an invalid amount ("
+            .. amount
+            .. ")"
+        )
+    end
+    return RGBTable:new(c1)
+        :blend_with(RGBTable:new(c2), amount)
+        :round()
+        :clamp()
+        :to_hex()
 end
 
 return M
