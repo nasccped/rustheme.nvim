@@ -169,9 +169,17 @@ function M.callback(plt, cfg)
         DiffIndexLine = { fg = plt.ui_cyan },
 
         --- Diagnostics ---------------------------------------------
-        ErrorMsg = { fg = plt.ui_red, bg = none },
-        WarningMsg = { fg = plt.ui_yellow, bg = none },
-        Question = { fg = plt.ui_magenta, bg = none },
+        ErrorMsg = {
+            fg = color.luminosity(plt.ui_red, 20), bg = none
+        },
+        WarningMsg = {
+            fg = color.luminosity(plt.ui_yellow, 20),
+            bg = none
+        },
+        Question = {
+            fg = color.luminosity(plt.ui_magenta, 20),
+            bg = none
+        },
 
         --- Menu ----------------------------------------------------
         Pmenu = {
