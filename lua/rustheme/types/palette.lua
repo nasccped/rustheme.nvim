@@ -1,0 +1,26 @@
+---@class palette.RusthemePalette
+---@field editor_bg string
+---@field editor_bg_darker string
+---@field editor_bg_highlight string
+---@field editor_bg_highlight2 string
+---@field editor_selection string
+---@field editor_text string
+---@field editor_weak_text string
+---@field editor_contrast string
+---@field ui_red string
+---@field ui_green string
+---@field ui_yellow string
+---@field ui_blue string
+---@field ui_magenta string
+---@field ui_cyan string
+---@field ui_white string
+---@field syntax_orange string
+---@field syntax_orange2 string
+---@field syntax_blue string
+---@field syntax_green string
+---@field syntax_green2 string
+---@field syntax_yellow string
+---@field syntax_yellow2 string
+---@field syntax_annotation string
+---@field syntax_comment string
+---@field syntax_high_magenta string
