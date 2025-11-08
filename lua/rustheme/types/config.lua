@@ -42,3 +42,14 @@
 ---@field string? boolean String within code.
 ---@field char? boolean Char within code.
 ---@field const? boolean Constant related config.
+---@field annotation? boolean Annotation or func attributes.
+---@field markup_strong? boolean Markup lang bolds.
+---@field markup_italic? boolean Markup lang italics.
+---@field markup_heading? boolean Markup lang headings.
+---@field markup_quote? boolean Markup lang quotes.
+---@field markup_math? boolean Markup lang math (like in LaTeX).
+---@field markup_url? boolean Markup lang URLs.
+---@field markdown_list? boolean Markdown list tick.
+---@field markdown_checked? boolean Markdown checked squares (`[x]`)
+---@field tsx_attribute? boolean
+---@field markdown_unchecked? boolean Markdown unchecked squares (`[ ]`)
