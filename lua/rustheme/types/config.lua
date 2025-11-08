@@ -39,3 +39,6 @@
 ---@field match_paren? boolean Matching parents () / [] / {}.
 ---@field substitute? boolean Substitute text when running `:s/[OLD]/[NEW]/[OPTIONS]`.
 ---@field pmenu_selection? boolean Current Pop-up menu selection.
+---@field string? boolean String within code.
+---@field char? boolean Char within code.
+---@field const? boolean Constant related config.

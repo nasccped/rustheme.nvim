@@ -11,7 +11,9 @@ local globals = {
         separators = true,
         match_paren = true,
         substitute = true,
-        pmenu_selection = true
+        pmenu_selection = true,
+        string = false,
+        char = false
     },
     italics = {
         title = false,
@@ -21,7 +23,9 @@ local globals = {
         separators = false,
         match_paren = false,
         substitute = false,
-        pmenu_selection = false
+        pmenu_selection = false,
+        string = false,
+        char = false
     },
     transparents = {
         background = false,
