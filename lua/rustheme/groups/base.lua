@@ -1,186 +1,249 @@
 local M = {}
 
+local color = require("rustheme.lib.color")
 local none = "NONE"
 
 --- Returns the base groups by a given palette/config.
 ---@param plt palette.RusthemePalette
----@param cfg config.RusthemeConfig
+---@param cfg config.GlobalFields
 ---@return table
-function M.groups(plt, cfg)
-    local bold = plt.bold and cfg.globals.bold or false
-    local italic = plt.italic and cfg.globals.italic or false
-    local undercurl = plt.undercurl and cfg.globals.undercurl
-        or false
-    local bg = cfg.globals.transparent and none
-        or plt.editor.background
-    local weak_bg = cfg.globals.transparent and none
-        or plt.editor.weak_background
-    local float_bg = cfg.globals.float_transparent and none
-        or plt.editor.weak_background
-    local invert_title = cfg.globals.invert_title
-    local cur_line = cfg.globals.transparent and none
-        or plt.editor.contrast_color
+function M.callback(plt, cfg)
+    local transp_bg = cfg.transparents.background
+    local transp_float_bg = cfg.transparents.float_background
+    local inv_title = cfg.invert_title
     return {
         --- Normal --------------------------------------------------
-        Normal = { fg = plt.editor.foreground, bg = bg },
+        Normal = {
+            fg = plt.editor_text,
+            bg = transp_bg and none or plt.editor_bg
+        },
         NormalNC = "Normal",
 
         --- Float ---------------------------------------------------
-        FloatTitle = {
-            fg = invert_title and float_bg
-                or plt.editor.strong_contrast_color,
-            bg = invert_title and plt.editor.strong_contrast_color
-                or float_bg,
-            bold = bold
+        FloatTitle = inv_title and {
+            fg = plt.editor_bg,
+            bg = plt.editor_contrast,
+            bold = cfg.bolds.title,
+            italic = cfg.italics.title
+        } or {
+            fg = plt.editor_contrast,
+            bg = transp_float_bg and none or plt.editor_bg,
+            bold = cfg.bolds.title,
+            italic = cfg.italics.title
         },
         FloatBorder = {
-            fg = plt.editor.strong_background,
-            bg = float_bg,
+            fg = plt.editor_bg_highlight2,
+            bg = transp_float_bg and none or plt.editor_bg
         },
         NormalFloat = {
-            fg = plt.editor.foreground,
-            bg = float_bg,
+            fg = plt.editor_text,
+            bg = transp_float_bg and none or plt.editor_bg
         },
 
         --- Text ----------------------------------------------------
-        Title = "FloatTitle",
-        Italic = { italic = italic },
-        Bold = { bold = bold },
-        Conceal = { fg = plt.editor.contrast_color, bg = none },
-        SpecialKey = { fg = plt.editor.foreground, bg = none },
+        Title = { fg = plt.editor_contrast, bg = none },
+        Italic = { italic = true },
+        Bold = { bold = true },
+        Conceal = { fg = plt.editor_weak_text, bg = none },
+        SpecialKey = { fg = plt.editor_text, bg = none },
 
         --- Tab -----------------------------------------------------
-        TabLine = { fg = plt.editor.weak_foreground, bg = weak_bg },
-        TabLineSel = {
-            fg = plt.editor.foreground,
-            bg = bg,
-            bold = bold,
-            italic = italic
+        TabLine = {
+            fg = plt.editor_weak_text,
+            bg = plt.editor_bg_darker,
         },
-        TabLineFill = { fg = none, bg = weak_bg },
+        TabLineSel = {
+            fg = plt.editor_weak_text,
+            bg = plt.editor_bg,
+            bold = cfg.bolds.tab_line_sel,
+            italic = cfg.italics.tab_line_sel,
+        },
+        TabLineFill = {
+            fg = none,
+            bg = transp_bg and none or plt.editor_bg_darker
+        },
 
         --- Winbar --------------------------------------------------
-        WinBar = { fg = plt.editor.foreground, bg = none },
-        WinBarNC = {
-            fg = plt.editor.weak_foreground,
-            bg = bg,
-        },
+        WinBar = { fg = plt.editor_weak_text, bg = none },
+        WinBarNC = "WinBar",
 
         --- Status --------------------------------------------------
-        StatusLine = { fg = plt.editor.foreground, bg = weak_bg },
-        StatusLineNC = { fg = plt.editor.foreground, bg = none },
-        StatusInactive = { fg = plt.editor.foreground, bg = bg },
+        StatusLine = {
+            fg = plt.editor_weak_text,
+            bg = transp_bg and none or plt.editor_bg_darker
+        },
+        StatusLineNC = "StatusLine",
+        StatusInactive = "StatusLine",
         StatusNormal = {
-            fg = plt.editor.background,
-            bg = plt.editor.cyan
+            fg = plt.editor_bg,
+            bg = plt.ui_blue
         },
         StatusInsert = {
-            fg = plt.editor.background,
-            bg = plt.editor.green
+            fg = plt.editor_bg,
+            bg = plt.ui_green
         },
         StatusVisual = {
-            fg = plt.editor.background,
-            bg = plt.editor.magenta
+            fg = plt.editor_bg,
+            bg = plt.ui_magenta
         },
         StatusReplace = {
-            fg = plt.editor.background,
-            bg = plt.editor.red
+            fg = plt.editor_bg,
+            bg = plt.ui_magenta
         },
         StatusCommand = {
-            fg = plt.editor.background,
-            bg = plt.editor.yellow
+            fg = plt.editor_bg,
+            bg = plt.ui_yellow
         },
         StatusTerminal = "StatusInsert",
 
         --- UI ------------------------------------------------------
         Cursor = {
-            fg = plt.editor.background,
-            bg = plt.editor.strong_background
+            fg = none,
+            bg = "#ff0000" -- wth this field does???
         },
         CursorIM = "Cursor",
         lCursor = "Cursor",
-        CursorLineNr = { fg = plt.editor.strong_contrast_color, bg = none },
-        LineNr = { fg = plt.editor.strong_background, bg = none },
+        CursorLineNr = { fg = plt.editor_contrast, bg = none },
+        LineNr = { fg = plt.editor_bg_highlight2, bg = none },
         WinSeparator = {
-            fg = plt.editor.weak_background,
-            bg = bg,
-            bold = bold,
+            fg = plt.editor_bg_darker,
+            bg = transp_bg and none or plt.editor_bg,
+            bold = cfg.bolds.separators,
         },
-        VertSplit = {
-            fg = plt.editor.weak_background,
-            bg = bg,
+        VertSplit = "WinSeparator",
+        Folded = {
+            fg = color.blend(
+                plt.editor_text,
+                plt.editor_bg,
+                75
+            ),
+            bg = color.blend(
+                plt.editor_bg_highlight,
+                plt.editor_selection,
+                20
+            )
         },
-        Folded = { fg = plt.editor.foreground, bg = weak_bg },
-        FoldColumn = { fg = plt.editor.foreground, bg = none },
-        NonText = { fg = plt.editor.foreground, bg = none },
-        EndOfBuffer = { fg = plt.editor.foreground, bg = none },
+        FoldColumn = { fg = plt.editor_text, bg = none },
+        NonText = { fg = none, bg = none },
+        EndOfBuffer = "NonText",
         SignColumn = { fg = none, bg = none },
 
-        --- Diff --------------------
-        Added = { fg = plt.editor.green },
-        Removed = { fg = plt.editor.red },
-        Changed = { fg = plt.editor.yellow },
-        DiffAdded = { fg = plt.editor.green },    -- NOTE: DEPRECATED IN v0.10
-        DiffRemoved = { fg = plt.editor.red },    -- NOTE: DEPRECATED IN v0.10
-        DiffChanged = { fg = plt.editor.yellow }, -- NOTE: DEPRECATED IN v0.10
-        DiffAdd = { bg = plt.editor.weak_green },
-        DiffChange = { bg = plt.editor.weak_yellow },
-        DiffDelete = { bg = plt.editor.weak_red },
-        DiffText = { bg = plt.editor.weak_yellow },
-        DiffOldFile = { fg = plt.editor.yellow },
-        DiffNewFile = { fg = plt.editor.green },
-        DiffFile = { fg = plt.editor.cyan },
-        DiffLine = { fg = plt.editor.foreground },
-        DiffIndexLine = { fg = plt.editor.cyan },
+        --- Diff ----------------------------------------------------
+        Added = {
+            fg = color.luminosity(
+                color.blend(plt.ui_green, plt.editor_bg, 25),
+                10
+            )
+        },
+        Removed = {
+            fg = color.luminosity(
+                color.blend(plt.ui_red, plt.editor_bg, 25),
+                10
+            )
+        },
+        Changed = {
+            fg = color.luminosity(
+                color.blend(plt.ui_yellow, plt.editor_bg, 15),
+                10
+            )
+        },
+        -- DiffAdded = { fg = map.diff.added },     -- NOTE: DEPRECATED IN v0.10
+        -- DiffRemoved = { fg = map.diff.removed }, -- NOTE: DEPRECATED IN v0.10
+        -- DiffChanged = { fg = map.diff.changed }, -- NOTE: DEPRECATED IN v0.10
+        DiffAdd = {
+            bg = color.blend(plt.ui_green, plt.editor_bg, 80)
+        },
+        DiffChange = {
+            bg = color.blend(plt.ui_yellow, plt.editor_bg, 80)
+        },
+        DiffDelete = {
+            bg = color.blend(plt.ui_red, plt.editor_bg, 80)
+        },
+        DiffText = {
+            bg = color.blend(plt.ui_yellow, plt.editor_bg, 80)
+        },
+        DiffOldFile = { fg = plt.ui_yellow },
+        DiffNewFile = { fg = plt.ui_green },
+        DiffFile = { fg = plt.ui_blue },
+        DiffLine = { fg = plt.editor_text },
+        DiffIndexLine = { fg = plt.ui_cyan },
 
         --- Diagnostics ---------------------------------------------
-        ErrorMsg = { fg = plt.editor.red, bg = none },
-        WarningMsg = { fg = plt.editor.yellow, bg = none },
-        Question = { fg = plt.editor.magenta, bg = none },
+        ErrorMsg = { fg = plt.ui_red, bg = none },
+        WarningMsg = { fg = plt.ui_yellow, bg = none },
+        Question = { fg = plt.ui_magenta, bg = none },
 
         --- Menu ----------------------------------------------------
-        Pmenu = { fg = plt.editor.foreground, bg = weak_bg },
-        -- TODO: move `menu_selection` -> `selection`
-        PmenuSel = {
-            bg = plt.editor.contrast_color,
-            bold = bold,
-            blend = 0
+        Pmenu = {
+            fg = plt.editor_weak_text,
+            bg = transp_float_bg and none or plt.editor_bg_darker
         },
-        PmenuSbar = { fg = none, bg = plt.editor.background },
+        PmenuSel = {
+            fg = plt.editor_text,
+            bg = plt.editor_selection,
+            bold = cfg.bolds.pmenu_selection
+        },
+        PmenuSbar = {
+            fg = none,
+            bg = plt.editor_bg_highlight2
+        },
         PmenuThumb = {
             fg = none,
-            bg = plt.editor.background,
-            blend = 0
+            bg = plt.editor_bg_highlight2,
         },
         WildMenu = {
-            fg = plt.editor.strong_background,
-            bg = plt.editor.contrast_color
+            fg = plt.editor_bg,
+            bg = plt.editor_contrast
         },
 
         --- Search & Select -----------------------------------------
-        Search = { fg = none, bg = plt.editor.weak_yellow },
-        IncSearch = { fg = bg, bg = plt.editor.magenta },
-        Substitute = { fg = bg, bg = plt.editor.cyan, bold = bold },
+        Search = { fg = none, bg = plt.editor_bg_highlight2 },
+        IncSearch = { fg = plt.editor_bg, bg = plt.editor_contrast },
+        Substitute = {
+            fg = none,
+            bg = plt.editor_selection,
+            bold = cfg.bolds.substitute,
+            italic = cfg.italics.substitute,
+        },
         CurSearch = "IncSearch",
-        Visual = { fg = none, bg = plt.editor.contrast_color },
-        VisualNOS = { fg = plt.editor.contrast_color, bg = none },
+        Visual = { fg = none, bg = plt.editor_selection },
+        VisualNOS = "Visual",
 
         --- Highlights ----------------------------------------------
-        CursorColumn = { fg = none, bg = plt.editor.contrast_color },
-        ColorColumn = { fg = none, bg = plt.editor.contrast_color }, -- NOTE: Find better color
-        CursorLine = { fg = none, bg = cur_line },
-        MatchParen = { fg = plt.editor.yellow, bg = none, bold = bold },
+        CursorColumn = {
+            fg = none,
+            bg = plt.editor_bg_highlight2
+        },
+        ColorColumn = "CursorColumn",
+        CursorLine = { fg = none, bg = plt.editor_bg_highlight },
+        MatchParen = {
+            fg = none,
+            bg = color.blend(plt.ui_yellow, plt.editor_bg, 70),
+            bold = cfg.bolds.match_paren,
+        },
 
         --- Spell ---------------------------------------------------
-        SpellBad = { sp = plt.editor.red, undercurl = undercurl },
-        SpellCap = { sp = plt.editor.yellow, undercurl = undercurl },
-        SpellLocal = { sp = plt.editor.cyan, undercurl = undercurl },
-        SpellRare = { sp = plt.editor.green, undercurl = undercurl },
+        SpellBad = { sp = plt.ui_red, undercurl = true },
+        SpellCap = { sp = plt.ui_yellow, undercurl = true },
+        SpellLocal = {
+            sp = plt.ui_blue,
+            undercurl = true
+        },
+        SpellRare = {
+            sp = plt.ui_green,
+            undercurl = true
+        },
 
         --- Other ---------------------------------------------------
-        Terminal = { fg = plt.editor.foreground, bg = weak_bg },
-        Directory = { fg = plt.editor.cyan, bg = none },
-        QuickFixLine = { fg = plt.editor.contrast_color, bg = plt.editor.yellow },
+        Terminal = {
+            fg = plt.editor_text,
+            bg = transp_float_bg and none or plt.editor_bg
+        },
+        Directory = { fg = plt.syntax_blue, bg = none },
+        QuickFixLine = {
+            fg = plt.editor_bg,
+            bg = plt.editor_contrast
+        },
     }
 end
 
