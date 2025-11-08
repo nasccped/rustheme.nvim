@@ -2,9 +2,9 @@
 return {
     -- editor related stuff (background, foreground, selections, and
     -- editor's highlights)
-    editor_bg = "#0a0f1a",
-    editor_bg_darker = "#05070c",
-    editor_bg_highlight = "#151929",
+    editor_bg = "#0a0c0f",
+    editor_bg_darker = "#040406",
+    editor_bg_highlight = "#191b25",
     editor_bg_highlight2 = "#32344c",
     editor_selection = "#26324c",
     editor_text = "#e8e8e8",
