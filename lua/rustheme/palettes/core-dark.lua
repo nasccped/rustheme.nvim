@@ -22,12 +22,12 @@ return {
 
     -- syntax related stuff
     syntax_orange = "#fb784c",
-    syntax_orange2 = "#fc8c67",
+    syntax_orange2 = "#ffb578",
     syntax_blue = "#6eb8ff",
     syntax_green = "#b0e292",
     syntax_green2 = "#8ff691",
-    syntax_yellow = "#ffcd77",
-    syntax_yellow2 = "#fff0a4",
+    syntax_yellow = "#ffbc68",
+    syntax_yellow2 = "#fff0a6",
 
     -- color attached to specific tokens (can change HUE over
     -- palette)
