@@ -7,8 +7,8 @@ return {
     editor_bg_highlight = "#191b25",
     editor_bg_highlight2 = "#32344c",
     editor_selection = "#26324c",
-    editor_text = "#e8e8e8",
-    editor_weak_text = "#c1c1c1",
+    editor_text = "#d8d8d8",
+    editor_weak_text = "#b1b1b1",
     editor_contrast = "#ea8666",
 
     -- ui related stuff (git colors, diag, messages, ...)
@@ -23,11 +23,11 @@ return {
     -- syntax related stuff
     syntax_orange = "#fb784c",
     syntax_orange2 = "#fc8c67",
-    syntax_blue = "#82c1ff",
-    syntax_green = "#93d070",
-    syntax_green2 = "#7fed81",
-    syntax_yellow = "#f6cb6f",
-    syntax_yellow2 = "#ffe78b",
+    syntax_blue = "#6eb8ff",
+    syntax_green = "#b0e292",
+    syntax_green2 = "#8ff691",
+    syntax_yellow = "#ffcd77",
+    syntax_yellow2 = "#fff0a4",
 
     -- color attached to specific tokens (can change HUE over
     -- palette)
