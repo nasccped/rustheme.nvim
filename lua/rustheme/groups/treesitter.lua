@@ -1,6 +1,6 @@
 local M = {}
 
---- Returns the lsp's groups by a given palette/config.
+--- Returns the treesitter's groups by a given palette/config.
 ---@param plt palette.RusthemePalette
 ---@param cfg config.GlobalFields
 ---@return table
@@ -65,7 +65,7 @@ function M.callback(plt, cfg)
         ["@keyword.operator"] = "Keyword",
         ["@keyword.import"] = "Keyword",
         ["@keyword.type"] = "Keyword",
-        ["@keyword.modifier"] = "Structure",
+        ["@keyword.modifier"] = "Keyword",
         ["@keyword.repeat"] = "Keyword",
         ["@keyword.return"] = "Keyword",
         ["@keyword.debug"] = "Keyword",
@@ -77,8 +77,8 @@ function M.callback(plt, cfg)
         ["@keyword.directive"] = "Keyword",
         ["@keyword.directive.define"] = "Keyword",
 
-        ["@punctuation.delimiter"] = { fg = plt.editor_text },
-        ["@punctuation.bracket"] = { fg = plt.editor_text },
+        ["@punctuation.delimiter"] = { fg = plt.editor_weak_text },
+        ["@punctuation.bracket"] = { fg = plt.editor_weak_text },
         ["@punctuation.special"] = { fg = plt.syntax_yellow2 },
         ["@punctuation.bracket.php"] = { fg = plt.syntax_yellow2 },
 
@@ -223,12 +223,15 @@ function M.callback(plt, cfg)
 
         -- rust
         ["@constant.rust"] = "Constant",
-        ["@function.macro.rust"] = "Macro",
+        ["@function.macro.rust"] = "Identifier",
+        ["@function.rust"] = "Function",
         ["@module.rust"] = "@module",
+        ["@operator.rust"] = "@lsp.typemod.macro.defaultLibrary.rust",
         ["@punctuation.special.rust"] = {
             fg = plt.syntax_high_magenta
         },
         ["@type.rust"] = { fg = plt.syntax_green },
+        ["@keyword.directive.rust"] = "RustAttribute",
 
         -- toml
         ["@property.toml"] = { fg = plt.syntax_blue },
@@ -322,7 +325,7 @@ function M.callback(plt, cfg)
         ["@enum"] = { fg = plt.syntax_green },
         ["@enumMember"] = "@constant",
         ["@event"] = { fg = plt.syntax_orange },
-        ["@interface"] = "@keyword",
+        ["@interface"] = "@type",
         ["@modifier"] = { fg = plt.syntax_blue },
         ["@regexp"] = { fg = plt.syntax_orange2 },
         ["@struct"] = { fg = plt.syntax_green },
