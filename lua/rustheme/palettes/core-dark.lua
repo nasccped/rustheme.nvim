@@ -12,6 +12,7 @@ return {
     editor_contrast = "#ea8666",
 
     -- ui related stuff (git colors, diag, messages, ...)
+    ui_black = "#040406",
     ui_red = "#dc4141",
     ui_green = "#57d052",
     ui_yellow = "#f5c34e",
