@@ -74,8 +74,11 @@ function M.callback(plt, cfg)
         ["@lsp.typemod.function.defaultLibrary.rust"] = {
             fg = plt.editor_text
         },
-        ["@lsp.typemod.generic.attribute.rust"] = "Constant",
+        ["@lsp.typemod.generic.attribute.rust"] = {
+            fg = plt.syntax_green2
+        },
         ["@lsp.typemod.macro.defaultLibrary.rust"] = "RustMacro",
+        ["@lsp.typemod.decorator.library.rust"] = "RustDecoratorFunc",
         ["@lsp.type.macro.rust"] = "RustMacro",
         ["@lsp.type.function.rust"] = { fg = plt.syntax_yellow },
         ["@lsp.type.namespace.rust"] = "@namespace.rust",

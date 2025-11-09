@@ -63,7 +63,19 @@ function M.callback(plt, cfg)
             bg = none,
             underline = true
         },
-        RustAttribute = { fg = plt.syntax_annotation, bg = none },
+        RustAttribute = {
+            fg = plt.syntax_annotation,
+            bg = none,
+            bold = cfg.bolds.annotation,
+            italic = cfg.italics.annotation
+        },
+        -- Functions within a rust macro decor `#[func_name(...)]`
+        RustDecoratorFunc = {
+            fg = plt.syntax_annotation,
+            bg = none,
+            bold = cfg.bolds.annotation,
+            italic = cfg.italics.annotation
+        },
         Ignore = { fg = none, bg = none },
         Error = { fg = plt.ui_red, bg = none },
         Todo = { fg = plt.ui_yellow, bg = none },
