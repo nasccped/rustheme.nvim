@@ -21,7 +21,6 @@ function M.load(variant)
         "rustheme %s",
         string.gsub(variant, "-", " ")
     )
-    vimenv.set_background(bg)
     vimenv.set_colors_name(colors_name)
     local cfg = vim.deepcopy(M.config.variant_config[variant])
     cfg = vim.tbl_deep_extend("force", cfg or {}, M.config.globals)
@@ -36,6 +35,7 @@ function M.load(variant)
         groups.get_groups(plt, cfg or {}),
         M.config.groups_override or {}
     )
+    vimenv.set_background(bg)
     vimenv.set_hl(grps)
 end
 
