@@ -77,8 +77,8 @@ function M.callback(plt, cfg)
         ["@keyword.directive"] = "Keyword",
         ["@keyword.directive.define"] = "Keyword",
 
-        ["@punctuation.delimiter"] = { fg = plt.editor_weak_text },
-        ["@punctuation.bracket"] = { fg = plt.editor_weak_text },
+        ["@punctuation.delimiter"] = { fg = plt.syntax_high_magenta },
+        ["@punctuation.bracket"] = { fg = plt.editor_text },
         ["@punctuation.special"] = { fg = plt.syntax_yellow2 },
         ["@punctuation.bracket.php"] = { fg = plt.syntax_yellow2 },
 
@@ -167,6 +167,7 @@ function M.callback(plt, cfg)
 
         ["@markup.raw"] = { fg = plt.editor_weak_text },
         ["@markup.raw.block"] = { fg = plt.editor_weak_text },
+        ["@markup.raw.markdown_inline"] = { fg = plt.syntax_orange2 },
 
         ["@markup.list"] = "Special",
         ["@markup.list.markdown"] = {
@@ -226,7 +227,9 @@ function M.callback(plt, cfg)
         ["@function.macro.rust"] = "Identifier",
         ["@function.rust"] = "Function",
         ["@module.rust"] = "@module",
-        ["@operator.rust"] = "@lsp.typemod.macro.defaultLibrary.rust",
+        ["@operator.rust"] = {
+            fg = plt.syntax_high_magenta
+        },
         ["@punctuation.special.rust"] = {
             fg = plt.syntax_high_magenta
         },
