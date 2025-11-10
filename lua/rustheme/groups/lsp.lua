@@ -82,6 +82,8 @@ function M.callback(plt, cfg)
         ["@lsp.type.macro.rust"] = "RustMacro",
         ["@lsp.type.function.rust"] = { fg = plt.syntax_yellow },
         ["@lsp.type.namespace.rust"] = "@namespace.rust",
+        ["@lsp.typemod.variable.callable.rust"] = "Function",
+        ["@function.call.rust"] = "Function"
     }
 end
 
