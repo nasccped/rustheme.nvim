@@ -6,9 +6,9 @@ return {
     editor_bg_darker = "#040406",
     editor_bg_highlight = "#191b25",
     editor_bg_highlight2 = "#32344c",
-    editor_selection = "#26324c",
-    editor_text = "#d8d8d8",
-    editor_weak_text = "#b1b1b1",
+    editor_selection = "#273655",
+    editor_text = "#dde3ec",
+    editor_weak_text = "#b1b9c1",
     editor_contrast = "#ea8666",
 
     -- ui related stuff (git colors, diag, messages, ...)
@@ -23,10 +23,10 @@ return {
 
     -- syntax related stuff
     syntax_orange = "#fb784c",
-    syntax_orange2 = "#ffb578",
+    syntax_orange2 = "#fd9376",
     syntax_blue = "#6eb8ff",
-    syntax_green = "#b0e292",
-    syntax_green2 = "#8ff691",
+    syntax_green = "#b6e482",
+    syntax_green2 = "#82ff84",
     syntax_yellow = "#ffbc68",
     syntax_yellow2 = "#fff0a6",
 
