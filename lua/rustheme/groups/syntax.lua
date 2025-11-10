@@ -77,7 +77,7 @@ function M.callback(plt, cfg)
             italic = cfg.italics.annotation
         },
         Ignore = { fg = none, bg = none },
-        Error = { fg = plt.ui_red, bg = none },
+        Error = { fg = none, bg = none },
         Todo = { fg = plt.ui_yellow, bg = none },
     }
 end
