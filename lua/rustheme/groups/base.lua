@@ -123,7 +123,7 @@ function M.callback(plt, cfg)
                 20
             )
         },
-        FoldColumn = { fg = plt.editor_text, bg = none },
+        FoldColumn = { fg = plt.editor_bg_highlight2, bg = none },
         NonText = { fg = none, bg = none },
         EndOfBuffer = "NonText",
         SignColumn = { fg = none, bg = none },
