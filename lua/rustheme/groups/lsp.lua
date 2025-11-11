@@ -83,7 +83,8 @@ function M.callback(plt, cfg)
         ["@lsp.type.function.rust"] = { fg = plt.syntax_yellow },
         ["@lsp.type.namespace.rust"] = "@namespace.rust",
         ["@lsp.typemod.variable.callable.rust"] = "Function",
-        ["@function.call.rust"] = "Function"
+        ["@function.call.rust"] = "Function",
+        ["@lsp.typemod.lifetime.declaration.rust"] = "Type",
     }
 end
 
