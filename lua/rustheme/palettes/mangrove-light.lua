@@ -13,12 +13,12 @@ return {
 
     -- ui related stuff (git colors, diag, messages, ...)
     ui_black = "#0d130c",
-    ui_red = "#bc2e2e",
-    ui_green = "#35af30",
-    ui_yellow = "#d99c11",
-    ui_blue = "#355ea6",
-    ui_magenta = "#98519d",
-    ui_cyan = "#539ca2",
+    ui_red = "#c03f3f",
+    ui_green = "#338d30",
+    ui_yellow = "#a88f57",
+    ui_blue = "#406ebf",
+    ui_magenta = "#b73fc0",
+    ui_cyan = "#498082",
     ui_white = "#83978f",
 
     -- syntax related stuff
