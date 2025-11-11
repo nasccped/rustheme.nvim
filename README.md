@@ -7,13 +7,24 @@
 A neovim colorscheme based on [Rust Foundation
 brand's](https://rustfoundation.org/brand-guide/) color palette:
 
-| Color Name     | Hex Value | Color Render                                            |
-| :------------: | :-------: | :-----------------------------------------------------: |
-| Rust Dark Blue | `#1E2650` | ![#1E2650](https://placeholdit.com/60x40/1E2650/1E2650) |
-| Rust Orange    | `#D34516` | ![#D34516](https://placeholdit.com/60x40/D34516/D34516) |
-| Rust Blue      | `#28607F` | ![#28607F](https://placeholdit.com/60x40/28607F/28607F) |
-| Rust Silver    | `#67737A` | ![#67737A](https://placeholdit.com/60x40/67737A/67737A) |
-| Rust Green     | `#61784D` | ![#61784D](https://placeholdit.com/60x40/61784D/61784D) |
+<table>
+  <tr>
+    <th>core dark</th>
+    <th>core light</th>
+  </tr>
+  <tr>
+    <td><img src="./images/core-dark.png" alt="core dark variant image"></td>
+    <td><img src="./images/core-light.png" alt="core light variant image"></td>
+  </tr>
+  <tr>
+    <th>mangrove dark</th>
+    <th>mangrove light</th>
+  </tr>
+  <tr>
+    <td><img src="./images/mangrove-dark.png" alt="mangrove dark variant image"></td>
+    <td><img src="./images/mangrove-light.png" alt="mangrove light variant image"></td>
+  </tr>
+</table>
 
 > [!NOTE]
 >
