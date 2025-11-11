@@ -1,6 +1,6 @@
 local M = {}
 
-local plugins = { "which-key" }
+local plugins = { "which-key", "indent-blankline" }
 
 --- Generates a group table from a given `palette.RusthemePalette`
 --- and `config.GlobalFields`. The returned table can map string to
